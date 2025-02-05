@@ -77,7 +77,6 @@ export class CategoriaFormComponent implements OnInit {
   
     this.isSubmitting = true;
   
-    // Asegurar que 'activo' tenga un valor booleano explícito
     const categoria: Categoria = {
       ...this.categoriaForm.value,
      

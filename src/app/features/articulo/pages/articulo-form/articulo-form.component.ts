@@ -95,7 +95,7 @@
 
 
           const preciosArray = this.articuloForm.get('precios') as FormArray;
-          preciosArray.clear(); // Limpiar el array existente
+          preciosArray.clear(); 
           articulo.precios.forEach((precio) => {
             preciosArray.push(
               this.fb.group({

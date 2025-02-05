@@ -10,11 +10,11 @@ import { Categoria } from '../models/categoria';
 export class CategoriaService {
   private apiUrl = environment.apiUrl + 'categoria';
 
-  constructor(private http: HttpClient) {} // HttpClient está correctamente inyectado
+  constructor(private http: HttpClient) {} 
 
   getCategorias(): Observable<Categoria[]> {
     return this.http.get<{ data: Categoria[], total: number }>(this.apiUrl).pipe(
-      map(response => response.data) // Extraer solo el array de categorías
+      map(response => response.data) 
     );
   }
 
