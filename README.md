@@ -43,21 +43,25 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local:
    cd prueba-tecnica-frontend
     ```
 2. **Instalar Dependencias**:
-     ```bash
-  npm install
-  ```
+
+   ```bash
+     npm install
+    ```
+
 3. **Configurar el Entorno:**:
     Asegúrate de que el backend esté configurado y en ejecución.
 
     Si es necesario, configura las variables de entorno en el archivo environment.ts.
       
 4. **Ejecutar la Aplicación:**:
-     ```bash
+
+   ```bash
      ng serve
-     ```
+    ```
 
 ## Estructura del Proyecto
-     ```bash
+
+   ```bash
      src/
     ├── app/
     │   ├── core/               # Servicios, interceptores y modelos
