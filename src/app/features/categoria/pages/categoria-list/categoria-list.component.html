@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <h2>Lista de Categorías</h2> 
+  <button mat-button [routerLink]="'/categorias/nueva'">Agregar Categoria</button>
+  
+  <!-- Input de búsqueda -->
+  <mat-form-field appearance="outline" class="search-field float-right">
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar por nombre">
+  </mat-form-field>
+
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 table table-striped">
+    <!-- Columna Clave -->
+    <ng-container matColumnDef="clave">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Clave </th>
+      <td mat-cell *matCellDef="let categoria"> {{ categoria.clave }} </td>
+    </ng-container>
+
+    <!-- Columna Nombre -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+      <td mat-cell *matCellDef="let categoria"> {{ categoria.nombre }} </td>
+    </ng-container>
+
+    <!-- Columna Fecha Creado -->
+    <ng-container matColumnDef="fechaCreado">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Creado </th>
+      <td mat-cell *matCellDef="let categoria"> {{ formatearFecha(categoria.fechaCreado) }} </td>
+    </ng-container>
+
+    <!-- Columna Estado -->
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef> Estado </th>
+      <td mat-cell *matCellDef="let categoria">
+        <span [class.text-success]="categoria.activo" [class.text-danger]="!categoria.activo">
+          {{ categoria.activo ? 'Activo' : 'Inactivo' }}
+        </span>
+      </td>
+    </ng-container>
+
+    <!-- Columna Acciones -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let categoria">
+        <button mat-icon-button color="primary" (click)="editarCategoria(categoria)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="eliminarCategoria(categoria)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Filas de la tabla -->
+    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+  </table>
+</div>

@@ -1,0 +1,77 @@
+<div class="container mt-4">
+  <h2>{{buttonText}}  Categoría</h2>
+  <form
+    [formGroup]="categoriaForm"
+    (ngSubmit)="submitForm()"
+    class="needs-validation"
+    novalidate
+  >
+    <div class="form-grid">
+      <!-- Campo Clave -->
+      <div class="form-field">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Clave</mat-label>
+          <input matInput formControlName="clave" required />
+          <mat-error *ngIf="f['clave'].hasError('required')">
+            La clave es obligatoria.
+          </mat-error>
+          <mat-error *ngIf="f['clave'].hasError('minlength')">
+            La clave debe tener al menos 3 caracteres.
+          </mat-error>
+          <mat-error *ngIf="f['clave'].hasError('maxlength')">
+            La clave no puede tener más de 10 caracteres.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Campo Nombre -->
+      <div class="form-field">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" required />
+          <mat-error *ngIf="f['nombre'].hasError('required')">
+            El nombre es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="f['nombre'].hasError('minlength')">
+            El nombre debe tener al menos 3 caracteres.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Campo Fecha Creado -->
+      <div class="form-field">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Fecha Creado</mat-label>
+          <input
+            matInput
+            [value]="
+              formatearFechaCorta(categoriaForm.get('fechaCreado')?.value)
+            "
+            readonly
+          />
+        </mat-form-field>
+      </div>
+
+      <!-- Campo Activo -->
+      <div class="form-field">
+        <mat-checkbox formControlName="activo">Activo</mat-checkbox>
+      </div>
+    </div>
+
+    <!-- Botón de envío -->
+    <div class="button-container">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="categoriaForm.invalid || isSubmitting"
+      >
+        <span
+          *ngIf="isSubmitting"
+          class="spinner-border spinner-border-sm"
+        ></span>
+        {{ buttonText }}
+      </button>
+    </div>
+  </form>
+</div>

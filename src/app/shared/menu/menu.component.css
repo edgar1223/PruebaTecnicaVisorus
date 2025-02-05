@@ -1,0 +1,96 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: #ffffff;
+  position: relative;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+button[mat-button] {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+}
+
+button[mat-button]:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  border-radius: 8px;
+}
+
+/* Estilos para el menú colapsado en pantallas pequeñas */
+.collapsed-menu {
+  display: none;
+  flex-direction: column;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.collapsed-menu.open {
+  display: flex;
+}
+
+.collapsed-menu button[mat-button] {
+  width: 100%;
+  text-align: left;
+  padding: 12px 20px;
+}
+
+/* Estilos para el botón de menú en pantallas pequeñas */
+button[mat-icon-button] {
+  color: #ffffff;
+}
+
+/* Clases de Bootstrap para manejar la visibilidad */
+.d-none {
+  display: none;
+}
+
+.d-md-none {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .d-md-none {
+    display: block;
+  }
+
+  .d-md-flex {
+    display: none;
+  }
+}

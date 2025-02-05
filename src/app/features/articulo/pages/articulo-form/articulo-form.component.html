@@ -1,0 +1,88 @@
+<div class="container mt-4">
+    <h2>{{ buttonText }} Artículo</h2>
+    <form [formGroup]="articuloForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+      <!-- Contenedor de la grilla con Bootstrap -->
+      <div class="row">
+        <!-- Campo Clave -->
+        <div class="col-12 col-md-6 mb-3">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Clave</mat-label>
+            <input matInput formControlName="clave" required />
+            <mat-error *ngIf="articuloForm.get('clave')?.hasError('required')">
+              La clave es obligatoria.
+            </mat-error>
+            <mat-error *ngIf="articuloForm.get('clave')?.hasError('minlength')">
+              La clave debe tener al menos 3 caracteres.
+            </mat-error>
+          </mat-form-field>
+        </div>
+  
+        <!-- Campo Categoría -->
+        <div class="col-12 col-md-6 mb-3">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Categoría</mat-label>
+            <mat-select formControlName="categoria" required>
+              <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+                {{ categoria.nombre }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="articuloForm.get('categoria')?.hasError('required')">
+              La categoría es obligatoria.
+            </mat-error>
+          </mat-form-field>
+        </div>
+  
+        <!-- Campo Nombre -->
+        <div class="col-12 col-md-6 mb-3">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre" required />
+            <mat-error *ngIf="articuloForm.get('nombre')?.hasError('required')">
+              El nombre es obligatorio.
+            </mat-error>
+            <mat-error *ngIf="articuloForm.get('nombre')?.hasError('minlength')">
+              El nombre debe tener al menos 3 caracteres.
+            </mat-error>
+          </mat-form-field>
+        </div>
+  
+        <!-- Campo Precios -->
+        <div class="col-12 col-md-6 mb-3" formArrayName="precios">
+          <div *ngFor="let precio of getPreciosControls(); let i = index" [formGroupName]="i" class="precio-container mb-3">
+            <div class="row align-items-center">
+              <div class="col-10">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Precio {{ i + 1 }}</mat-label>
+                  <input matInput formControlName="precio" type="number" required (keypress)="validarEntrada($event)" />
+                  <mat-error *ngIf="precio.get('precio')?.hasError('required')">
+                    El precio es obligatorio.
+                  </mat-error>
+                  <mat-error *ngIf="precio.get('precio')?.hasError('min')">
+                    El precio debe ser mayor o igual a 0.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-2" *ngIf="i > 0">
+                <button mat-icon-button color="warn" (click)="eliminarPrecio(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <button mat-button color="primary" (click)="agregarPrecio()">Agregar Precio</button>
+        </div>
+  
+        <!-- Campo Activo -->
+        <div class="col-12 col-md-6 mb-3">
+          <mat-checkbox formControlName="activo">Activo</mat-checkbox>
+        </div>
+      </div>
+  
+      <!-- Botón de envío -->
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="articuloForm.invalid">
+          {{ buttonText }}
+        </button>
+      </div>
+    </form>
+  </div>

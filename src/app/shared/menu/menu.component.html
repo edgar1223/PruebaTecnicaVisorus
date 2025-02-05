@@ -1,0 +1,21 @@
+<mat-toolbar color="primary" class="navbar">
+  <div class="logo-container">
+    <img src="logo.png" alt="Logo" class="logo-image" />
+    <span class="logo-text">Visorus</span>
+  </div>
+
+  <button mat-icon-button class="d-md-none" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div class="menu-items d-none d-md-flex">
+    <button mat-button [routerLink]="'/categorias'">Categorías</button>
+    <button mat-button [routerLink]="'/articulos'">Artículos</button>
+  </div>
+
+  <!-- Menú colapsado para pantallas pequeñas -->
+  <div class="collapsed-menu" [ngClass]="{ 'open': isMenuOpen }">
+    <button mat-button [routerLink]="'/categorias'" (click)="toggleMenu()">Categorías</button>
+    <button mat-button [routerLink]="'/articulos'" (click)="toggleMenu()">Artículos</button>
+  </div>
+</mat-toolbar>
