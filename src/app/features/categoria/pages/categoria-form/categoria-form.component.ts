@@ -47,7 +47,7 @@ export class CategoriaFormComponent implements OnInit {
       clave: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
       fechaCreado: [Date.now(), Validators.required],
       nombre: ['', [Validators.required, Validators.minLength(3)]],
-      activo: [true]
+      
     });
 
     this.route.params.subscribe(params => {
@@ -74,10 +74,15 @@ export class CategoriaFormComponent implements OnInit {
     if (this.categoriaForm.invalid) {
       return;
     }
-
+  
     this.isSubmitting = true;
-    const categoria: Categoria = this.categoriaForm.value;
-
+  
+    // Asegurar que 'activo' tenga un valor booleano explícito
+    const categoria: Categoria = {
+      ...this.categoriaForm.value,
+     
+    };
+  
     if (this.isEditMode && this.categoriaId) {
       this.categoriaService.updateCategoria(this.categoriaId, categoria).subscribe({
         next: (response) => {
@@ -85,25 +90,26 @@ export class CategoriaFormComponent implements OnInit {
           this.router.navigate(['/categorias']);
         },
         error: (error) => {
-          this.notificaciones.mostrarErrores(error);;
+          this.notificaciones.mostrarErrores(error);
         },
         complete: () => (this.isSubmitting = false)
       });
     } else {
+      console.log(categoria)
       this.categoriaService.createCategoria(categoria).subscribe({
         next: (response) => {
-          this.categoriaForm.reset({ activo: true, fechaCreado: Date.now() });
+          this.categoriaForm.reset({ activo: false, fechaCreado: Date.now() });
           this.notificaciones.notificarCategoriaCreado(response.message);
           this.router.navigate(['/categorias']);
         },
         error: (error) => {
-          this.notificaciones.mostrarErrores(error)
+          this.notificaciones.mostrarErrores(error);
         },
         complete: () => (this.isSubmitting = false)
       });
     }
   }
-
+  
   formatearFechaCorta(timestamp: number): string {
     const fecha = new Date(timestamp);
     const dia = fecha.getDate().toString().padStart(2, '0');

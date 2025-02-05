@@ -72,3 +72,4 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local:
     └── styles.scss             # Estilos globales
     ```
 
+
