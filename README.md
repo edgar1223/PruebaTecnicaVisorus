@@ -70,6 +70,30 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local:
     │   ├── app.routes.ts       # Configuración de rutas
     ├── environments/           # Configuración de entornos (dev/prod)
     └── styles.scss             # Estilos globales
-    ```
+```
+## Capturas de Pantalla
+
+1. **Pantalla de Lista de Artículos**:
+![image](https://github.com/user-attachments/assets/d5fb2fd3-6fdf-421d-8702-11d2087abfb1)
+
+
+2. **Pantalla de Formulario de Artículo**:
+   ![image](https://github.com/user-attachments/assets/b4570cb4-124d-4a3b-a445-1d80bb96486e)
+
+4. **Pantalla de Editar de Artículo**:
+   ![image](https://github.com/user-attachments/assets/4bd2c2e3-cf5d-4f43-8ba9-42af5723a3e8)
+
+6. **Pantalla de Lista de Categorías**:
+   ![image](https://github.com/user-attachments/assets/0344f583-409d-46b7-92b7-e393c383889b)
+
+8. **Pantalla de Formulario de Categorías**:
+![image](https://github.com/user-attachments/assets/c443f7aa-2210-4faf-a623-41150578ba2f)
+
+10. **Pantalla de Editar de Categorías**:
+![image](https://github.com/user-attachments/assets/42542b5b-f49d-49a3-8d8f-52d39999173b)
+
+    
+
+
 
 
