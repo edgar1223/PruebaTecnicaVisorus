@@ -1,6 +1,6 @@
 <div class="container mt-4">
     <h2>{{ buttonText }} Artículo</h2>
-    <form [formGroup]="articuloForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+    <form [formGroup]="articuloForm" class="needs-validation" novalidate>
       <!-- Contenedor de la grilla con Bootstrap -->
       <div class="row">
         <!-- Campo Clave -->
@@ -80,7 +80,7 @@
   
       <!-- Botón de envío -->
       <div class="button-container">
-        <button mat-raised-button color="primary" type="submit" [disabled]="articuloForm.invalid">
+        <button mat-raised-button color="primary" type="submit"  (click)="onSubmit()" [disabled]="articuloForm.invalid">
           {{ buttonText }}
         </button>
       </div>

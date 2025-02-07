@@ -99,6 +99,7 @@
           articulo.precios.forEach((precio) => {
             preciosArray.push(
               this.fb.group({
+                id:precio.id,
                 precio: [precio.precio, [Validators.required, Validators.min(0)]],
               })
             );
